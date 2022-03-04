@@ -115,7 +115,11 @@ export default function Gameboard() {
             setTotalPoints(totalPoints + dicePoints); 
             setDicePoints(0);
             setBonusPoints(bonusPoints - dicePoints);
+            pisteet[0] = true;  
+        }
+        if (diceThrowsLeft > 0) {
             pisteet[0] = true;
+            setStatus('Throw 3 times before selecting points');
         }
         if (pisteet.every((val, i, arr) => val === arr[0])) {
             setStatus('Game over, all points selected');
@@ -124,10 +128,10 @@ export default function Gameboard() {
         if (bonusPoints < 0) {
             setBonusMsg1(' ');
             setBonusMsg2(' ');
-            setBonusPoints('You got the bonus');
+            setBonusPoints('You got the bonus!');
         }
         if (isNaN(bonusPoints)) {
-            setBonusPoints('You got the bonus');
+            setBonusPoints('You got the bonus!');
         }
         
     }
